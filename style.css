@@ -1,0 +1,24 @@
+/* внешние границы таблицы серого цвета толщиной 1px */
+
+body {
+    background: #F4F1F8;
+  }
+
+h1 {
+  text-align: center;
+  color: #6534aa;
+  }
+
+main {
+    display: flex;
+    flex-direction: row;
+    height: 50vh;
+    max-height: 50vh;
+  }
+
+footer {
+  margin: 200px;
+  margin-top: 210px;
+  text-align: center;
+  color: #6534aa;
+}
