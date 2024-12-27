@@ -62,7 +62,7 @@
         function getFullnameFromParts ($surname, $name, $patronomyc){
             $fullname = $surname . ' ' . $name . ' ' . $patronomyc;
             return $fullname;
-        };
+        }
         echo getFullnameFromParts ('Иванов', 'Иван', 'Иванович');
 
         $fullname = $example_persons_array['5']['fullname'];
@@ -73,14 +73,14 @@
                         'name' => $resfull[1],
                         'patronomyc' => $resfull[2]];
         return $respart;
-        };
+        }
         print_r(getPartsFromFullname ($fullname));
 
         function getShortName ($fullname){
             $respart = getPartsFromFullname($fullname);
             $shortname = $respart['name'] . ' ' . mb_substr($respart['surname'], 0, 1) . '.';
             return $shortname;
-        };
+        }
         echo getShortName ('Иванов Иван Иванович');
 
         function getGenderFromName ($fullname){
@@ -101,7 +101,7 @@
                     return 'Не определено';
                 } 
             }
-        };
+        }
 
         function getGenderDescription ($example_persons_array){
 
@@ -124,12 +124,12 @@
 
             echo <<<HEREDOCLETTER
             Гендерный состав аудитории:
-        ---------------------------
+            ---------------------------
             Мужчины - $menNumber%
             Женщины - $womenNumber%
             Не удалось определить - $undefindedNumber%
             HEREDOCLETTER;
-        };
+        }
 
         function getPerfectPartner ($surname, $name, $patronomyc, $example_persons_array){
 
@@ -156,7 +156,7 @@
             $firstPerson + $secondPerson =
             ♡ Идеально на $percent% ♡
             HEREDOCLETTER;
-        };
+        }
 
     ?>
 
