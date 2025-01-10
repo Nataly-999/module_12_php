@@ -67,7 +67,7 @@
             return $fullname;
         }
 
-        $fullname = $example_persons_array[1]['fullname'];
+        $fullname = $example_persons_array[2]['fullname'];
 
         function getPartsFromFullname($fullname)
         {
@@ -179,22 +179,22 @@
 
         ?>
 
-        <h2><?php echo "getFullnameFromParts"?></h2>
+        <h2><?php echo "Объединение ФИО: getFullnameFromParts"?></h2>
         <p><?php print_r(getFullnameFromParts('Иванов', 'Иван', 'Иванович')); ?></p>
 
-        <h2><?php echo "getPartsFromFullname"?></h2>
+        <h2><?php echo "Разбиение ФИО: getPartsFromFullname"?></h2>
         <p><?php print_r(getPartsFromFullname($fullname)); ?></p>
 
-        <h2><?php echo "getShortName"?></h2>
+        <h2><?php echo "Сокращение ФИО: getShortName"?></h2>
         <p><?php print_r(getShortName($fullname)); ?></p>
 
-        <h2><?php echo "getGenderFromName"?></h2>
+        <h2><?php echo "Функция определения пола по ФИО: getGenderFromName"?></h2>
         <p><?php print_r(getGenderFromName($fullname)); ?></p>
         
-        <h2><?php echo "getGenderDescription"?></h2>
+        <h2><?php echo "Определение возрастно-полового состава: getGenderDescription"?></h2>
         <p><?php print_r(getGenderDescription($example_persons_array)); ?></p>
 
-        <h2><?php echo "getPerfectPartner"?></h2>
+        <h2><?php echo "Идеальный подбор пары: getPerfectPartner"?></h2>
         <p><?php print_r(getPerfectPartner("ИваНов", "ИВан", "ИвановИч", $example_persons_array)); ?></p>
 
     </main>
