@@ -97,7 +97,7 @@
                 $sum += 1;
             }
             else {
-                if ((mb_substr($respart['patronomyc'], -2, 2) === 'вна') || (mb_substr($respart['name'], -1, 1) === 'а') || (mb_substr($respart['surname'], -2, 2) === 'ва')) {
+                if ((mb_substr($respart['patronomyc'], -3, 3) === 'вна') || (mb_substr($respart['name'], -1, 1) === 'а') || (mb_substr($respart['surname'], -2, 2) === 'ва')) {
                     $sum -= 1;
                 }
                 else {
@@ -106,12 +106,12 @@
             }
             
             if ($sum > 0) {
-                return 'Мужской';
+                return 1;
             } else {
                 if ($sum < 0) {
-                    return 'Женский';
+                    return -1;
                 } else {
-                    return 'Не определено';
+                    return 0;
                 }
             }
         }
@@ -120,15 +120,15 @@
         function getGenderDescription($persons_array)
         {
             $men = array_filter($persons_array, function ($persons_array) {
-                return (getGenderFromName($persons_array['fullname']) == 'Мужской');
+                return (getGenderFromName($persons_array['fullname']) == 1);
             });
 
             $women = array_filter($persons_array, function ($persons_array) {
-                return (getGenderFromName($persons_array['fullname']) == 'Женский');
+                return (getGenderFromName($persons_array['fullname']) == -1);
             });
 
             $undefinded = array_filter($persons_array, function ($persons_array) {
-                return (getGenderFromName($persons_array['fullname']) == 'Не определено');
+                return (getGenderFromName($persons_array['fullname']) == 0);
             });
 
             $number = count($men) + count($women) + count($undefinded);
@@ -161,20 +161,25 @@
             $randomPerson = $persons_array[$randNum]['fullname'];
             $randomGender = getGenderFromName($randomPerson);
 
-            while ($gender === $randomGender || $randomGender === "Не определено") {
-                $randNum = rand(0, count($persons_array)-1);
-                $randomPerson = $persons_array[$randNum]['fullname'];
-                $randomGender = getGenderFromName($randomPerson);
-            };
+            if ($gender ! 0){
+               
+                while ($gender === $randomGender || $randomGender === 0) {
+                    $randNum = rand(0, count($persons_array)-1);
+                    $randomPerson = $persons_array[$randNum]['fullname'];
+                    $randomGender = getGenderFromName($randomPerson);
+                };
 
-            $firstPerson = getShortName($fullname);
-            $secondPerson = getShortName($randomPerson);
-            $percent = mt_rand(5000, 10000) / 100;
+                $firstPerson = getShortName($fullname);
+                $secondPerson = getShortName($randomPerson);
+                $percent = mt_rand(5000, 10000) / 100;
 
-            echo <<<HEREDOCLETTER
-            $firstPerson + $secondPerson =
-            ♡ Идеально на $percent% ♡
-            HEREDOCLETTER;
+                echo <<<HEREDOCLETTER
+                $firstPerson + $secondPerson =
+                ♡ Идеально на $percent% ♡
+                HEREDOCLETTER;
+            } else
+                echo "Не сможем подобрать пару"; 
+        
         }
 
         ?>
